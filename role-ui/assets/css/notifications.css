@@ -1,0 +1,31 @@
+/* Стили уведомлений */
+.notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 15px 25px;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    z-index: 1000;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all var(--transition-normal);
+    background-color: var(--bg-light);
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.notification.success {
+    background-color: var(--success-color);
+    color: var(--bg-light);
+}
+
+.notification.error {
+    background-color: var(--error-color);
+    color: var(--bg-light);
+}
+
+.notification.warning {
+    background-color: var(--warning-color);
+    color: var(--bg-light);
+} 
