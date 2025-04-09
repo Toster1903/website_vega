@@ -1,0 +1,68 @@
+/* Сброс стилей */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    font-family: var(--font-family);
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+}
+
+body {
+    background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        transparent 40%,
+        #add8e6 41%,
+        #add8e6 60%,
+        transparent 61%,
+        transparent 100%
+    ),
+    linear-gradient(
+        45deg,
+        #add8e6 25%,
+        transparent 25%,
+        transparent 50%,
+        #add8e6 50%,
+        #add8e6 75%,
+        transparent 75%,
+        transparent
+    );
+    background-size: 80px 80px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+button, input, select, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    line-height: 1.2;
+} 
