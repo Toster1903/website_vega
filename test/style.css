@@ -1,0 +1,692 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --primary-color: #6A994E;
+    --primary-dark: #386641;
+    --primary-light: #A7C957;
+    --accent-color: #BC4749;
+    --accent-light: #d65d5f;
+    --bg-color: #F2E8CF;
+    --blue-light: #E6F3FF;
+    --blue-medium: #B8D8F8;
+    --blue-dark: #7AB5E6;
+    --white: #FFFFFF;
+    --gray-light: #F5F5F5;
+    --gray-medium: #E0E0E0;
+    --gray-dark: #757575;
+    --success-color: #23c483;
+    --success-shadow: rgba(46, 229, 157, 0.4);
+    --royal-blue: royalblue;
+    --royal-blue-dark: rgb(56, 90, 194);
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: var(--blue-light);
+    background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        transparent 40%,
+        #add8e6 41%,
+        #add8e6 60%,
+        transparent 61%,
+        transparent 100%
+    ),
+    linear-gradient(
+        45deg,
+        #add8e6 25%,
+        transparent 25%,
+        transparent 50%,
+        #add8e6 50%,
+        #add8e6 75%,
+        transparent 75%,
+        transparent
+    );
+    background-size: 80px 80px;
+}
+
+header {
+    background-color: #f5f7fa;
+    color: #333;
+    padding: 2rem;
+    text-align: center;
+    border-radius: 0 0 30px 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+header h1 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+    position: relative;
+    display: inline-block;
+    color: #333;
+    text-shadow: none;
+}
+
+header h1::after {
+    display: none;
+}
+
+header h1 span {
+    color: #3498db;
+    text-shadow: none;
+    position: relative;
+    display: inline-block;
+}
+
+header h1 span::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 8px;
+    background-color: rgba(52, 152, 219, 0.2);
+    bottom: 5px;
+    left: 0;
+    z-index: -1;
+    border-radius: 4px;
+}
+
+nav {
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(5px);
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    margin: 0 20px;
+    position: relative;
+}
+
+nav li:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 20px;
+    width: 1px;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+nav a {
+    color: #333;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    padding: 8px 15px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+nav a:hover {
+    color: #3498db;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    bottom: 0;
+    left: 50%;
+    background-color: #3498db;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+    border-radius: 3px;
+}
+
+nav a:hover::after {
+    width: 70%;
+}
+
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    nav li {
+        margin: 10px 0;
+    }
+}
+
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+section {
+    margin-bottom: 4rem;
+    background-color: var(--white);
+    padding: 2rem;
+    border-radius: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+h2 {
+    color: var(--blue-dark);
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-weight: 600;
+}
+
+h3 {
+    color: var(--blue-dark);
+    font-weight: 500;
+}
+
+/* Секция меню */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.menu-card {
+    background: var(--white);
+    padding: 1.5rem;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 1px solid var(--blue-medium);
+    cursor: pointer;
+}
+
+.menu-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.menu-image {
+    height: 200px;
+    background-color: var(--gray-light);
+    border-radius: 15px;
+    margin-bottom: 1rem;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.menu-card:hover .menu-image {
+    transform: scale(1.05);
+}
+
+.price {
+    font-weight: bold;
+    color: var(--accent-color);
+    margin: 1rem 0;
+}
+
+/* Секция бронирования */
+.booking-container {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    margin-bottom: 2rem;
+    border: 1px solid var(--blue-medium);
+}
+
+.date-selector {
+    margin-bottom: 2rem;
+}
+
+input[type="date"] {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid var(--gray-medium);
+    border-radius: 15px;
+    margin-top: 0.5rem;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.slots-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.slot-card {
+    background: var(--blue-light);
+    padding: 1rem;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    transition: transform 0.3s;
+}
+
+.slot-card:hover {
+    transform: translateY(-3px);
+}
+
+.time {
+    font-weight: bold;
+}
+
+.available {
+    color: var(--primary-color);
+    font-size: 0.9rem;
+}
+
+.registration {
+    text-align: center;
+    padding: 2rem;
+    background: var(--blue-light);
+    border-radius: 20px;
+    margin-top: 2rem;
+}
+
+/* Формы регистрации и входа - новый стиль */
+.auth-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: var(--gray-light);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.auth-tabs {
+    display: flex;
+    width: 100%;
+    margin-bottom: 20px;
+    border-radius: 20px 20px 0 0;
+    overflow: hidden;
+}
+
+.auth-tab-btn {
+    flex: 1;
+    padding: 15px 0;
+    font-weight: 500;
+    text-align: center;
+    cursor: pointer;
+    background-color: var(--gray-medium);
+    color: var(--gray-dark);
+    transition: all 0.3s;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+}
+
+.auth-tab-btn.active {
+    background-color: var(--royal-blue);
+    color: white;
+}
+
+.auth-forms {
+    padding: 20px;
+}
+
+/* Форма регистрации в стиле Uiverse.io */
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    max-width: 500px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 20px;
+    position: relative;
+    margin: 0 auto;
+}
+
+.title {
+    font-size: 28px;
+    color: var(--royal-blue);
+    font-weight: 600;
+    letter-spacing: -1px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+    margin-bottom: 10px;
+}
+
+.title::before,
+.title::after {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    left: 0px;
+    background-color: var(--royal-blue);
+}
+
+.title::before {
+    width: 18px;
+    height: 18px;
+    background-color: var(--royal-blue);
+}
+
+.title::after {
+    width: 18px;
+    height: 18px;
+    animation: pulse 1s linear infinite;
+}
+
+.message, .signin {
+    color: rgba(88, 87, 87, 0.822);
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.signin {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.signin a {
+    color: var(--royal-blue);
+    text-decoration: none;
+}
+
+.signin a:hover {
+    text-decoration: underline var(--royal-blue);
+}
+
+.flex {
+    display: flex;
+    width: 100%;
+    gap: 10px;
+    margin-bottom: 5px;
+}
+
+.form label {
+    position: relative;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.form label .input {
+    width: 100%;
+    padding: 10px 10px 20px 10px;
+    outline: 0;
+    border: 1px solid rgba(105, 105, 105, 0.397);
+    border-radius: 10px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.form label .input + span {
+    position: absolute;
+    left: 10px;
+    top: 15px;
+    color: grey;
+    font-size: 0.9em;
+    cursor: text;
+    transition: 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.form label .input:placeholder-shown + span {
+    top: 15px;
+    font-size: 0.9em;
+}
+
+.form label .input:focus + span,
+.form label .input:valid + span {
+    top: 0px;
+    font-size: 0.7em;
+    font-weight: 600;
+}
+
+.form label .input:valid + span {
+    color: green;
+}
+
+.submit {
+    border: none;
+    outline: none;
+    background-color: var(--royal-blue);
+    padding: 12px;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 16px;
+    transform: .3s ease;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+}
+
+.submit:hover {
+    background-color: var(--royal-blue-dark);
+}
+
+@keyframes pulse {
+    from {
+        transform: scale(0.9);
+        opacity: 1;
+    }
+
+    to {
+        transform: scale(1.8);
+        opacity: 0;
+    }
+}
+
+/* Старые стили форм - можно удалить или оставить для справки */
+.auth-form {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    display: none;
+}
+
+.auth-form.hidden {
+    display: none;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--blue-dark);
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid var(--gray-medium);
+    border-radius: 15px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--blue-dark);
+    box-shadow: 0 0 0 2px rgba(122, 181, 230, 0.2);
+}
+
+/* Кнопки - новый стиль от Uiverse.io */
+.btn {
+    padding: 1.1em 2.5em;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #333;
+    background-color: var(--white);
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    outline: none;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.btn:hover {
+    transform: translateY(-7px);
+    box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+    transform: translateY(-1px);
+}
+
+.btn.primary {
+    background-color: var(--blue-dark);
+    color: white;
+}
+
+.btn.primary:hover {
+    background-color: var(--success-color);
+    box-shadow: 0px 15px 20px var(--success-shadow);
+    transform: translateY(-7px);
+}
+
+.btn.secondary {
+    background-color: var(--blue-medium);
+    color: var(--white);
+}
+
+.btn.secondary:hover {
+    background-color: var(--success-color);
+    box-shadow: 0px 15px 20px var(--success-shadow);
+}
+
+.btn.accent {
+    background-color: var(--accent-color);
+    color: white;
+    padding: 1.2em 3em;
+    font-size: 14px;
+    margin-top: 1rem;
+}
+
+.btn.accent:hover {
+    background-color: var(--success-color);
+    box-shadow: 0px 15px 20px var(--success-shadow);
+}
+
+/* Специальные настройки для кнопок в формах и карточках */
+.auth-form .btn, .menu-card .btn, .slot-card .btn {
+    width: 100%;
+    text-align: center;
+}
+
+footer {
+    background: var(--blue-dark);
+    color: white;
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: 2rem;
+    border-radius: 30px 30px 0 0;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .menu-grid, .slots-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .booking-container {
+        padding: 1rem;
+    }
+    
+    section {
+        padding: 1.5rem;
+        border-radius: 20px;
+    }
+    
+    .btn {
+        padding: 1em 2em;
+        font-size: 11px;
+    }
+
+    .flex {
+        flex-direction: column;
+        gap: 0;
+    }
+}
+
+/* Стили для форм авторизации */
+.hidden {
+    display: none !important;
+}
+
+#register-form-container, #login-form-container {
+    transition: opacity 0.3s ease;
+}
+
+#register-form-container.hidden, #login-form-container.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Стили для модального окна с информацией о продукте */
+.product-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+}
+
+.modal-content {
+    background-color: white;
+    border-radius: 20px;
+    padding: 30px;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+    transform: translateY(20px);
+    transition: transform 0.3s ease-out;
+}
+
+/* Стили для уведомлений */
+.notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 15px 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease-out;
+} 
