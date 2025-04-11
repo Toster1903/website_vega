@@ -75,6 +75,139 @@
             background-color: var(--blue-dark);
             color: white;
         }
+
+        /* Стили для формы редактирования расписания */
+        .schedule-edit-form {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 30px;
+            background: var(--white);
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .schedule-edit-form h2 {
+            text-align: center;
+            color: var(--primary-dark);
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+        }
+
+        .day-selector {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .day-select-input {
+            padding: 12px 20px;
+            font-size: 1.1rem;
+            border: 2px solid var(--primary-light);
+            border-radius: 8px;
+            background-color: var(--white);
+            color: var(--primary-dark);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .day-select-input:hover {
+            border-color: var(--primary-color);
+        }
+
+        .day-select-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+        }
+
+        .day-schedule {
+            background: var(--gray-light);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+
+        .day-schedule h3 {
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+            text-align: center;
+        }
+
+        .meal-time-section {
+            background: var(--white);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .meal-time-section h4 {
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .time-input-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .time-input {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .time-input label {
+            color: var(--gray-dark);
+            font-size: 0.9rem;
+        }
+
+        .time-picker {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            background: var(--gray-light);
+            padding: 10px;
+            border-radius: 6px;
+        }
+
+        .time-picker select {
+            padding: 8px;
+            border: none;
+            background: var(--white);
+            border-radius: 4px;
+            font-size: 1rem;
+            color: var(--primary-dark);
+            cursor: pointer;
+        }
+
+        .time-picker span {
+            color: var(--gray-dark);
+            font-weight: bold;
+        }
+
+        .save-schedule-btn {
+            display: block;
+            width: 200px;
+            margin: 30px auto;
+            padding: 12px 25px;
+            background: var(--success-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .save-schedule-btn:hover {
+            background: var(--success-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
     </style>
 </head>
 <body>
@@ -91,7 +224,147 @@
     <main>
         <!-- Контейнер для динамически загружаемых секций -->
         <div id="dynamic-content">
-            <!-- Здесь будут отображаться элементы в зависимости от роли -->
+            <div class="schedule-edit-form">
+                <h2>Редактирование расписания работы столовой</h2>
+                
+                <div class="day-selector">
+                    <select id="day-select" class="day-select-input">
+                        <option value="monday">Понедельник</option>
+                        <option value="tuesday">Вторник</option>
+                        <option value="wednesday">Среда</option>
+                        <option value="thursday">Четверг</option>
+                        <option value="friday">Пятница</option>
+                        <option value="saturday">Суббота</option>
+                        <option value="sunday">Воскресенье</option>
+                    </select>
+                </div>
+
+                <div class="day-schedule">
+                    <h3 id="selected-day">Понедельник</h3>
+                    
+                    <div class="meal-time-section">
+                        <h4>Завтрак</h4>
+                        <div class="time-input-group">
+                            <div class="time-input">
+                                <label>Начало</label>
+                                <div class="time-picker">
+                                    <select class="hour-select">
+                                        <option value="08">08</option>
+                                        <option value="09">09</option>
+                                        <option value="10">10</option>
+                                    </select>
+                                    <span>:</span>
+                                    <select class="minute-select">
+                                        <option value="00">00</option>
+                                        <option value="15">15</option>
+                                        <option value="30">30</option>
+                                        <option value="45">45</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="time-input">
+                                <label>Конец</label>
+                                <div class="time-picker">
+                                    <select class="hour-select">
+                                        <option value="09">09</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                    </select>
+                                    <span>:</span>
+                                    <select class="minute-select">
+                                        <option value="00">00</option>
+                                        <option value="15">15</option>
+                                        <option value="30">30</option>
+                                        <option value="45">45</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="meal-time-section">
+                        <h4>Обед</h4>
+                        <div class="time-input-group">
+                            <div class="time-input">
+                                <label>Начало</label>
+                                <div class="time-picker">
+                                    <select class="hour-select">
+                                        <option value="12">12</option>
+                                        <option value="13">13</option>
+                                        <option value="14">14</option>
+                                    </select>
+                                    <span>:</span>
+                                    <select class="minute-select">
+                                        <option value="00">00</option>
+                                        <option value="15">15</option>
+                                        <option value="30">30</option>
+                                        <option value="45">45</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="time-input">
+                                <label>Конец</label>
+                                <div class="time-picker">
+                                    <select class="hour-select">
+                                        <option value="13">13</option>
+                                        <option value="14">14</option>
+                                        <option value="15">15</option>
+                                    </select>
+                                    <span>:</span>
+                                    <select class="minute-select">
+                                        <option value="00">00</option>
+                                        <option value="15">15</option>
+                                        <option value="30">30</option>
+                                        <option value="45">45</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="meal-time-section">
+                        <h4>Ужин</h4>
+                        <div class="time-input-group">
+                            <div class="time-input">
+                                <label>Начало</label>
+                                <div class="time-picker">
+                                    <select class="hour-select">
+                                        <option value="17">17</option>
+                                        <option value="18">18</option>
+                                        <option value="19">19</option>
+                                    </select>
+                                    <span>:</span>
+                                    <select class="minute-select">
+                                        <option value="00">00</option>
+                                        <option value="15">15</option>
+                                        <option value="30">30</option>
+                                        <option value="45">45</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="time-input">
+                                <label>Конец</label>
+                                <div class="time-picker">
+                                    <select class="hour-select">
+                                        <option value="18">18</option>
+                                        <option value="19">19</option>
+                                        <option value="20">20</option>
+                                    </select>
+                                    <span>:</span>
+                                    <select class="minute-select">
+                                        <option value="00">00</option>
+                                        <option value="15">15</option>
+                                        <option value="30">30</option>
+                                        <option value="45">45</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="save-schedule-btn">Сохранить расписание</button>
+                </div>
+            </div>
         </div>
     </main>
 
@@ -130,6 +403,153 @@
                             <div class="slots-grid" id="working-hours-slots">
                                 <!-- Часы работы будут добавлены динамически -->
                             </div>
+                        </div>
+                    </div>
+                </section>
+            `,
+            
+            // Шаблон для редактирования расписания
+            editSchedule: `
+                <section id="edit-schedule">
+                    <div class="schedule-edit-form">
+                        <h2>Редактирование расписания работы столовой</h2>
+                        
+                        <div class="day-selector">
+                            <select id="day-select" class="day-select-input">
+                                <option value="monday">Понедельник</option>
+                                <option value="tuesday">Вторник</option>
+                                <option value="wednesday">Среда</option>
+                                <option value="thursday">Четверг</option>
+                                <option value="friday">Пятница</option>
+                                <option value="saturday">Суббота</option>
+                                <option value="sunday">Воскресенье</option>
+                            </select>
+                        </div>
+
+                        <div class="day-schedule">
+                            <h3 id="selected-day">Понедельник</h3>
+                            
+                            <div class="meal-time-section">
+                                <h4>Завтрак</h4>
+                                <div class="time-input-group">
+                                    <div class="time-input">
+                                        <label>Начало</label>
+                                        <div class="time-picker">
+                                            <select class="hour-select">
+                                                <option value="08">08</option>
+                                                <option value="09">09</option>
+                                                <option value="10">10</option>
+                                            </select>
+                                            <span>:</span>
+                                            <select class="minute-select">
+                                                <option value="00">00</option>
+                                                <option value="15">15</option>
+                                                <option value="30">30</option>
+                                                <option value="45">45</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="time-input">
+                                        <label>Конец</label>
+                                        <div class="time-picker">
+                                            <select class="hour-select">
+                                                <option value="09">09</option>
+                                                <option value="10">10</option>
+                                                <option value="11">11</option>
+                                            </select>
+                                            <span>:</span>
+                                            <select class="minute-select">
+                                                <option value="00">00</option>
+                                                <option value="15">15</option>
+                                                <option value="30">30</option>
+                                                <option value="45">45</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="meal-time-section">
+                                <h4>Обед</h4>
+                                <div class="time-input-group">
+                                    <div class="time-input">
+                                        <label>Начало</label>
+                                        <div class="time-picker">
+                                            <select class="hour-select">
+                                                <option value="12">12</option>
+                                                <option value="13">13</option>
+                                                <option value="14">14</option>
+                                            </select>
+                                            <span>:</span>
+                                            <select class="minute-select">
+                                                <option value="00">00</option>
+                                                <option value="15">15</option>
+                                                <option value="30">30</option>
+                                                <option value="45">45</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="time-input">
+                                        <label>Конец</label>
+                                        <div class="time-picker">
+                                            <select class="hour-select">
+                                                <option value="13">13</option>
+                                                <option value="14">14</option>
+                                                <option value="15">15</option>
+                                            </select>
+                                            <span>:</span>
+                                            <select class="minute-select">
+                                                <option value="00">00</option>
+                                                <option value="15">15</option>
+                                                <option value="30">30</option>
+                                                <option value="45">45</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="meal-time-section">
+                                <h4>Ужин</h4>
+                                <div class="time-input-group">
+                                    <div class="time-input">
+                                        <label>Начало</label>
+                                        <div class="time-picker">
+                                            <select class="hour-select">
+                                                <option value="17">17</option>
+                                                <option value="18">18</option>
+                                                <option value="19">19</option>
+                                            </select>
+                                            <span>:</span>
+                                            <select class="minute-select">
+                                                <option value="00">00</option>
+                                                <option value="15">15</option>
+                                                <option value="30">30</option>
+                                                <option value="45">45</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="time-input">
+                                        <label>Конец</label>
+                                        <div class="time-picker">
+                                            <select class="hour-select">
+                                                <option value="18">18</option>
+                                                <option value="19">19</option>
+                                                <option value="20">20</option>
+                                            </select>
+                                            <span>:</span>
+                                            <select class="minute-select">
+                                                <option value="00">00</option>
+                                                <option value="15">15</option>
+                                                <option value="30">30</option>
+                                                <option value="45">45</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button class="save-schedule-btn">Сохранить расписание</button>
                         </div>
                     </div>
                 </section>
@@ -219,29 +639,6 @@
                 </section>
             `,
             
-            // Шаблон для управления часами работы (администратор столовой)
-            manageWorkingHours: `
-                <section id="manage-working-hours">
-                    <h2>Управление часами работы</h2>
-                    <div class="booking-container">
-                        <h3>Установите часы работы столовой</h3>
-                        <div class="form">
-                            <div class="flex">
-                                <label>
-                                    <input type="time" id="open-time" class="input" value="08:00">
-                                    <span>Время открытия</span>
-                                </label>
-                                <label>
-                                    <input type="time" id="close-time" class="input" value="20:00">
-                                    <span>Время закрытия</span>
-                                </label>
-                            </div>
-                            <button class="submit" id="save-hours-btn">Сохранить часы работы</button>
-                        </div>
-                    </div>
-                </section>
-            `,
-            
             // Шаблон для управления меню (администратор столовой)
             manageMenu: `
                 <section id="manage-menu">
@@ -314,7 +711,7 @@
                 { id: "assign-leaders", text: "Назначение старост" }
             ],
             canteen_admin: [
-                { id: "manage-working-hours", text: "Управление часами" },
+                { id: "editSchedule", text: "Редактирование расписания" },
                 { id: "manage-menu", text: "Управление меню" },
                 { id: "statistics", text: "Статистика" }
             ]
@@ -326,7 +723,7 @@
             student: ["workingHours", "menu", "mealChoice"],
             leader: ["workingHours", "menu", "bookingSlots", "studentChoices"],
             college_admin: ["workingHours", "menu", "assignLeaders"],
-            canteen_admin: ["manageWorkingHours", "manageMenu", "viewStatistics"]
+            canteen_admin: ["editSchedule", "manageMenu", "viewStatistics"]
         };
 
         // Инициализация приложения
@@ -719,15 +1116,6 @@
                 document.getElementById('no-meal').addEventListener('click', function() {
                     document.getElementById('meal-choice-result').innerHTML = '<p style="color: var(--accent-color);">Вы выбрали: Не буду есть сегодня</p>';
                     showNotification('Вы выбрали: Не буду есть сегодня', 'info');
-                });
-            }
-            
-            // Обработчик для сохранения часов работы (администратор столовой)
-            if (document.getElementById('save-hours-btn')) {
-                document.getElementById('save-hours-btn').addEventListener('click', function() {
-                    const openTime = document.getElementById('open-time').value;
-                    const closeTime = document.getElementById('close-time').value;
-                    showNotification(`Часы работы сохранены: ${openTime} - ${closeTime}`, 'success');
                 });
             }
             
