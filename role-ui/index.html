@@ -651,6 +651,14 @@
                                 <span>Название блюда</span>
                             </label>
                             <label>
+                                <select id="meal-type" class="input">
+                                    <option value="breakfast">Завтрак</option>
+                                    <option value="lunch">Обед</option>
+                                    <option value="dinner">Ужин</option>
+                                </select>
+                                <span>Тип приема пищи</span>
+                            </label>
+                            <label>
                                 <input type="text" id="dish-description" class="input" placeholder="">
                                 <span>Описание</span>
                             </label>
@@ -1128,8 +1136,14 @@
                     const image = document.getElementById('dish-image').value;
                     
                     if (name && description && price) {
+                        const mealType = document.getElementById('meal-type').value;
+                        const mealTypeText = {
+                            'breakfast': 'завтрак',
+                            'lunch': 'обед',
+                            'dinner': 'ужин'
+                        }[mealType];
                         // В реальном приложении здесь был бы запрос к серверу
-                        showNotification(`Блюдо "${name}" добавлено в меню`, 'success');
+                        showNotification(`Блюдо "${name}" добавлено в меню на ${mealTypeText}`, 'success');
                         
                         // Очистка формы
                         document.getElementById('dish-name').value = '';
